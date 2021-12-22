@@ -1,0 +1,31 @@
+---
+resources:
+- name: src
+  type: git
+  check_every: 1m
+  source:
+    uri: https://github.com/jprelph/concourse-demos.git
+    branch: main
+
+jobs:
+- name: whats-here
+  plan:
+    - get: src
+    - task: list
+      config:
+        platform: linux
+        image_resource:
+          type: registry-image
+          source:
+            repository: alpine
+            tag: latest
+        inputs:
+        - name: src
+        run:
+          path: /bin/sh
+          args:
+          - -exc
+          - |
+            cd src
+            ls
+
