@@ -8,11 +8,12 @@ resources:
     branch: main
 
 jobs:
-- name: createImage
+- name: create-image
   plan:
     - get: src
       trigger: true
     - task: build
+      privileged: true
       config:
         platform: linux
         image_resource:
