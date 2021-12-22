@@ -1,0 +1,19 @@
+---
+jobs:
+  - name: hello
+    public: true
+    plan:
+      - task: hi
+        config:
+          platform: linux
+          image_resource:
+            type: registry-image
+            source:
+              repository: busybox
+              tag: stable-musl
+          run:
+            path: /bin/sh
+            args:
+            - -exc
+            - |
+              echo "hello"
