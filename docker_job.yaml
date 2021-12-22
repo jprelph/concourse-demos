@@ -61,12 +61,9 @@ jobs:
       trigger: true
       passed: [create-image]
     - task: test
+      image: test-image
       config:
         platform: linux
-        image_resource:
-          type: registry-image
-          source:
-            repository: jprelph/test-image
         run:
           path: sh
           args:
