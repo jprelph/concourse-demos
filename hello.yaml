@@ -9,11 +9,11 @@ jobs:
           image_resource:
             type: registry-image
             source:
-              repository: busybox
-              tag: stable-musl
+              repository: python
+              tag: slim-buster
           run:
             path: /bin/sh
             args:
             - -exc
             - |
-              echo "hello"
+              python -c 'print("Hello World")'
