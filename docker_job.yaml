@@ -1,0 +1,27 @@
+---
+resources:
+- name: src
+  type: git
+  check_every: 1m
+  source:
+    uri: https://github.com/jprelph/concourse-demos.git
+    branch: main
+
+jobs:
+- name: createImage
+  plan:
+    - get: src
+      trigger: true
+    - task: build
+      config:
+        platform: linux
+        image_resource:
+          type: registry-image
+          source:
+            repository: concourse/oci-build-task
+        params:
+          DOCKERFILE: src/Dockerfile
+        inputs:
+        - name: src
+        run:
+          path: build
