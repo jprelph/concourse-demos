@@ -11,6 +11,7 @@ jobs:
 - name: whats-here
   plan:
     - get: src
+      trigger: true
     - task: list
       config:
         platform: linux
