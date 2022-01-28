@@ -224,11 +224,6 @@ ENV NGINX_BUILD_DEPS=$NGINX_BUILD_DEPS
 # Build Nginx with support for LUA
 FROM base AS builder
 
-# Proxy Setup
-ENV http_proxy='http://proxy.local:8080'
-ENV https_proxy='http://proxy.local:8080'
-ENV no_proxy='localhost, 127.0.0.1, 169.254.169.254, .iptho.co.uk, .ipttools.io, .ipttools.info, .svc.cluster.local, 10.200.0.1, 10.200.0.10, .s3.amazonaws.com, .phz, .bics-collaboration.homeoffice.gov.uk, .homeoffice.gov.uk, .ebsa.local'
-
 COPY tpl/Makefile Makefile
 
 # TODO: NGINX_BUILD_CONFIG not updated
