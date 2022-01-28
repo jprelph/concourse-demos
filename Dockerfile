@@ -349,16 +349,6 @@ RUN set -eux \
     && mkdir -p /etc/nginx/conf/locations \
     && md5sum /etc/nginx/nginx.conf | cut -d' ' -f 1 > /container_default_ngx
 
-COPY tpl/docker-entrypoint.sh /
-COPY tpl/defaults.sh /
-COPY tpl/enable_location.sh /
-COPY tpl/nginx.conf /etc/nginx/nginx.conf
-COPY tpl/nginx_*.conf tpl/security_defaults.conf tpl/location_template.conf tpl/logging.conf /etc/nginx/conf/
-COPY tpl/lua/* /etc/nginx/lua/
-COPY tpl/naxsi/location.rules /etc/nginx/naxsi/location.template
-COPY tpl/temp-certs/crt tpl/temp-certs/key /etc/keys/
-COPY tpl/temp-certs/dhparam.pem /etc/nginx/conf
-
 RUN chown -R nginx:101 /etc/nginx/ \
     && touch /var/run/nginx.pid \
     && chown -R nginx:101 /var/run/nginx.pid \
