@@ -27,7 +27,7 @@ jobs:
           source:
             repository: concourse/oci-build-task
         params:
-          DOCKERFILE: src/Dockerfile
+          CONTEXT: src
         inputs:
         - name: src
         outputs:
