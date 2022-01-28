@@ -363,12 +363,6 @@ RUN chown -R nginx:101 /etc/nginx/ \
     && chown -R nginx:101 /var/run/nginx.pid \
     && chown -R nginx:101 /var/cache/nginx/
 
-# EBSA root CAs
-# The EBSA certificates from cert-man
-COPY --from=cert-man /*crt  /usr/local/share/ca-certificates/
-
-RUN update-ca-certificates
-
 # smoke test
 RUN envsubst -V \
     && nginx -V \
