@@ -26,10 +26,9 @@ jobs:
           type: registry-image
           source:
             repository: concourse/oci-build-task
-        params:
-          CONTEXT: src
         inputs:
         - name: src
+          path: .
         outputs:
         - name: image
         run:
